@@ -10,13 +10,17 @@ require('dotenv').config();
 
 
 
+const { Pool } = require('pg');
+
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Artventory',
-  password: '12345678',
-  port: 5432,
+  connectionString: process.env.DB_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
+
+module.exports = pool;
+
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
