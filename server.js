@@ -22,6 +22,7 @@ const pool = new Pool({
 module.exports = pool;
 
 
+
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
